@@ -1,0 +1,20 @@
+name: Daily USD Red News Alert
+
+on:
+  schedule:
+    # 02:30 UTC tương ứng 09:30 sáng giờ Việt Nam (Chạy từ Thứ 2 đến Thứ 6)
+    - cron: '30 2 * * 1-5'
+  workflow_dispatch: # Tạo nút bấm chạy thử thủ công bất cứ lúc nào
+
+jobs:
+  send-telegram-alert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Python Script
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+        run: python3 usd_red_alert.py
