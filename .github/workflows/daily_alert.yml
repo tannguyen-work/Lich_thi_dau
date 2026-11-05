@@ -1,10 +1,7 @@
 name: Daily USD Red News Alert
 
 on:
-  schedule:
-    # 00:30 UTC tương ứng 07:30 sáng giờ Việt Nam (Chạy từ Thứ 2 đến Thứ 6)
-    - cron: '30 0 * * 1-5'
-  workflow_dispatch: # Cho phép bấm chạy thử thủ công bất cứ lúc nào
+  workflow_dispatch: # Nhận lệnh kích hoạt tức thì từ cron-job.org hoặc nút bấm tay
 
 jobs:
   send-telegram-alert:
