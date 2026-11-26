@@ -34,7 +34,7 @@ def main():
     # BỔ SUNG: Tin màu xám (Non-Economic) của tất cả các đồng tiền
     gray_news = []
     for ev in events:
-        if ev.get("impact") == "Non-Economic":
+        if ev.get("impact") in ("Non-Economic", "Holiday"):
             ev_time = datetime.fromisoformat(ev["date"]).astimezone(vn_tz)
             if start_time <= ev_time < end_time:
                 day_note = " (rạng sáng mai)" if ev_time.date() > now.date() else ""
